@@ -10,4 +10,13 @@ public class HelloController {
     public String hello(){
         return "Hello!";
     }
+    @GetMapping("/welcome")
+    public String welcome(){
+        return "Welcome!";
+    }
+    @GetMapping("/bye")
+    public String bye(){
+        return "Bye!";
+    }
+
 }

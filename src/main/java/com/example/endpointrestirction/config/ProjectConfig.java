@@ -40,8 +40,11 @@ public class ProjectConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Throwable{
         http.httpBasic();
         http.authorizeHttpRequests()
+                .requestMatchers("/hello").hasAnyRole("ADMIN","MANAGER")
+                .requestMatchers("/welcome").hasRole("ADMIN")
+                .requestMatchers("/bye").hasRole("MANAGER")
                 .anyRequest()
-                .hasAnyRole("ADMIN","MANAGER");
+                .authenticated();
 
         return http.build();
     }
